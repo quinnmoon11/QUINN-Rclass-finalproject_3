@@ -1,0 +1,178 @@
+
+## The number of loci caught by each filter.
+## ipyrad API location: [assembly].stats_dfs.s7_filters
+
+                           total_filters applied_order retained_loci
+total_prefiltered_loci                 0             0         34163
+filtered_by_rm_duplicates              0             0         34163
+filtered_by_max_indels                 0             0         34163
+filtered_by_max_SNPs                   0             0         34163
+filtered_by_max_shared_het             0             0         34163
+filtered_by_min_sample             34122         34122            41
+total_filtered_loci                34122         34122            41
+
+
+## The number of loci recovered for each Sample.
+## ipyrad API location: [assembly].stats_dfs.s7_samples
+
+                       sample_coverage
+reference                           41
+AUHT6624                            41
+FHSM11062                           41
+FHSM13103                           41
+FHSM13277                           41
+FHSM13461                           41
+FHSM13563                           41
+FHSM16526                           41
+FHSM16527                           41
+FHSM16530                           41
+FHSM9042                            41
+FMNH282783                          41
+MVZ137535                           41
+MVZ137537                           41
+UCM68793                            41
+UMMZ217160                          41
+UMMZ217161                          41
+UMMZ217162                          41
+UMMZ217163                          41
+UMMZ217164                          41
+UMMZ217165                          41
+UTEP19951                           41
+UTEP21668                           41
+UTEP21669                           41
+arizonae_OCGR6220                   41
+sexlineatus_CAS210988               41
+sexlineatus_CAS214323               41
+sexlineatus_LACM405                 41
+sexlineatus_LSUH18938               41
+sexlineatus_UTEP19949               41
+sexlineatus_UTEP19952               41
+stephensae_AMNH104629               41
+viridis_LSUH21201                   41
+viridis_OCGR12740                   41
+viridis_OCGR4952                    41
+viridis_OCGR7048                    41
+viridis_UTEP20927                   41
+viridis_UTEP21736                   41
+
+
+## The number of loci for which N taxa have data.
+## ipyrad API location: [assembly].stats_dfs.s7_loci
+
+    locus_coverage  sum_coverage
+1                0             0
+2                0             0
+3                0             0
+4                0             0
+5                0             0
+6                0             0
+7                0             0
+8                0             0
+9                0             0
+10               0             0
+11               0             0
+12               0             0
+13               0             0
+14               0             0
+15               0             0
+16               0             0
+17               0             0
+18               0             0
+19               0             0
+20               0             0
+21               0             0
+22               0             0
+23               0             0
+24               0             0
+25               0             0
+26               0             0
+27               0             0
+28               0             0
+29               0             0
+30               0             0
+31               0             0
+32               0             0
+33               0             0
+34               0             0
+35               0             0
+36               0             0
+37              41            41
+38               0            41
+
+
+The distribution of SNPs (var and pis) per locus.
+## var = Number of loci with n variable sites (pis + autapomorphies)
+## pis = Number of loci with n parsimony informative site (minor allele in >1 sample)
+## ipyrad API location: [assembly].stats_dfs.s7_snps
+## The "reference" sample is included if present unless 'exclude_reference=True'
+
+    var  sum_var  pis  sum_pis
+0     0        0    2        0
+1     0        0    9        9
+2     0        0    9       27
+3     6       18    4       39
+4    11       62    7       67
+5     0       62    3       82
+6     1       68    2       94
+7     4       96    1      101
+8     3      120    1      109
+9     6      174    0      109
+10    4      214    1      119
+11    1      225    1      130
+12    0      225    0      130
+13    1      238    0      130
+14    1      252    0      130
+15    1      267    0      130
+16    0      267    0      130
+17    0      267    0      130
+18    0      267    0      130
+19    0      267    1      149
+20    1      287    0      149
+21    0      287    0      149
+22    1      309    0      149
+
+
+## Final Sample stats summary
+                       state  reads_raw  reads_passed_filter  refseq_mapped_reads  refseq_unmapped_reads  clusters_total  clusters_hidepth  hetero_est  error_est  reads_consens  loci_in_assembly
+AUHT6624                   7      63862                63827                34338                  29489            9093               666    0.004672   0.003359            556                41
+FHSM11062                  7     233108               232995               142123                  90872           20744              3785    0.002793   0.003316           3332                41
+FHSM13103                  7     363876               363748               227462                 136286           29169              5565    0.003405   0.003491           4974                41
+FHSM13277                  7     478380               478226               290093                 188133           29159              7429    0.002869   0.003353           6785                41
+FHSM13461                  7     583564               583336               362307                 221029           36252              7379    0.003539   0.003522           6708                41
+FHSM13563                  7     465169               464993               288824                 176169           30139              6734    0.003703   0.003456           6106                41
+FHSM16526                  7     119230               119195                73241                  45954            9890              1904    0.002852   0.003427           1706                41
+FHSM16527                  7    1896433              1895802              1159504                 736298           63763             16182    0.002437   0.003548          15383                41
+FHSM16530                  7    3703416              3701984              2289273                1412711          105534             18475    0.002742   0.002933          17739                41
+FHSM9042                   7     447017               446847               278237                 168610           38063              5799    0.003529   0.003528           5269                41
+FMNH282783                 7      80184                77718                43769                  33949           21536               190    0.001846   0.003946            165                41
+MVZ137535                  7    3305801              3304937              2051018                1253919           88532             15699    0.001915   0.002596          15113                41
+MVZ137537                  7   24014071             24005220             14771228                9233992          411328             22408    0.002512   0.002077          21260                41
+UCM68793                   7     502687               502546               272961                 229585           33622              5961    0.003164   0.003307           5384                41
+UMMZ217160                 7    9534986              9531821              5723999                3807822          136698             19648    0.003489   0.002091          18834                41
+UMMZ217161                 7     753801               753524               461599                 291925           30832              7564    0.003266   0.003333           7000                41
+UMMZ217162                 7     936864               936552               579996                 356556           31714             13023    0.003453   0.003432          12230                41
+UMMZ217163                 7    1110107              1109809               691480                 418329           46052             11891    0.003039   0.003371          11172                41
+UMMZ217164                 7     365250               365161               219077                 146084           21877              5798    0.003051   0.003338           5086                41
+UMMZ217165                 7   12410247             12404938              7649900                4755038          198452             22396    0.003379   0.002147          21453                41
+UTEP19951                  7    2026527              2025749              1252213                 773536           53994             14462    0.003692   0.003088          13745                41
+UTEP21668                  7    2447574              2446867              1516599                 930268           79784             14206    0.003526   0.002841          13453                41
+UTEP21669                  7    4156401              4155425              2558230                1597195          105225             20090    0.003863   0.003134          19345                41
+arizonae_OCGR6220          7    4787814              4786361              2733834                2052527           37894             19511    0.003141   0.001250          19191                41
+sexlineatus_CAS210988      7    1673212              1672685               948293                 724392           28932             19129    0.003561   0.001347          18813                41
+sexlineatus_CAS214323      7     862516               862260               493973                 368287           24559             14724    0.002829   0.001448          14201                41
+sexlineatus_LACM405        7     497057               496875               263885                 232990           24311              8291    0.004221   0.001378           7242                41
+sexlineatus_LSUH18938      7    1644253              1643581               938593                 704988           28979             18541    0.001890   0.001806          18208                41
+sexlineatus_UTEP19949      7     738421               738088               413263                 324825           25431             14586    0.002832   0.002051          13614                41
+sexlineatus_UTEP19952      7    1302835              1302186               738031                 564155           27626             18529    0.001882   0.001942          18240                41
+stephensae_AMNH104629      7    3282619              3281150              1874847                1406303           39356             21453    0.003804   0.001948          21107                41
+viridis_LSUH21201          7   12674668             12670504              7328843                5341661           80549             21634    0.002471   0.000333          21011                41
+viridis_OCGR12740          7    1690837              1690340               951613                 738727           26409             18806    0.002474   0.001191          18547                41
+viridis_OCGR4952           7     478569               478288               279075                 199213           22091              7102    0.003280   0.001606           6426                41
+viridis_OCGR7048           7     956266               955976               549900                 406076           23946             14492    0.002354   0.001379          13781                41
+viridis_UTEP20927          7    1188107              1187618               665393                 522225           28304             17994    0.002471   0.001768          17276                41
+viridis_UTEP21736          7    3736663              3735131              2151004                1584127           36338             21275    0.002359   0.001913          20956                41
+
+
+## Alignment matrix statistics:
+snps matrix size: (38, 309), 19.84% missing sites.
+sequence matrix size: (38, 9406), 24.64% missing sites.
