@@ -6,13 +6,11 @@ date: "04/30/2023"
 output: html_document
 ---
 
-This Quarto file loads and manipulates several .tre and .txt files and also builds several figures to help eludicate the background and explanation of my reserach. The results are created by pulling in various R files and sent to the 'Results' folder. This file also walks through some of the initial figures that were made outside of R and then later the versions made in R. 
-
-For this analysis, we want to ask and investigate three seperate questions relating to our penguin data set. This analysis will walk through an exploration of the various relationships between sex, mass, species, and flipper length. I have included some of my thinking as I worked through creating tables and figures. 
+This Quarto files explores files I made using basic R functions followed by compilation and annotation in Inkscape to my attemps to complete entire figure it R. The function of this file is to represent project 3, but more importantly practice making reproducible figures (and science). This Quarto file loads and manipulates several .tre and .txt files and also builds several figures to help eludicate the background and explanation of my reserach. The results are created by pulling in various R files and sent to the 'Results' folder. Rather than have the figures be remade every time by the Quarto file, all final figures made in R are stored in the Results folder. 
 
 # Abstract
 
-	Habitat degradation and anthropogenic introduction of alien species are two of the principal factors driving global reptile decline. With a significant number of reptiles at risk of extinction, there is a growing need to locate and protect threatened native species and identify introduced and potentially invasive populations. In Michigan, six-lined racerunner (Aspidoscelis sexlineata) lizards are found in a single public game reserve, 322 km separated from the closest known other populations in Indiana. This population’s small range and recent discovery has driven numerous calls for research into the whether the population is an isolated endemic or a recent anthropogenic introduction of the lizard. We used genetic sequence data and phylogenetic methods to study the provenance of the extralimital population of six-lined racerunners in Michigan. We recover a close relationship between the Michigan population and a single specimen from Indiana. This result is consistent with either a recent anthropogenic introduction from the midwestern United States or a native Michigan population. Further resolution between these opposing hypotheses depends on increased sampling from the region, which, at present, has limited representation in natural history collections. Given their narrow range, and without definitive evidence of human introduction, we recommend that six-lined racerunner lizards continue to be treated as endemic and threatened in the State of Michigan. 
+Habitat degradation and anthropogenic introduction of alien species are two of the principal factors driving global reptile decline. With a significant number of reptiles at risk of extinction, there is a growing need to locate and protect threatened native species and identify introduced and potentially invasive populations. In Michigan, six-lined racerunner (Aspidoscelis sexlineata) lizards are found in a single public game reserve, 322 km separated from the closest known other populations in Indiana. This population’s small range and recent discovery has driven numerous calls for research into the whether the population is an isolated endemic or a recent anthropogenic introduction of the lizard. We used genetic sequence data and phylogenetic methods to study the provenance of the extralimital population of six-lined racerunners in Michigan. We recover a close relationship between the Michigan population and a single specimen from Indiana. This result is consistent with either a recent anthropogenic introduction from the midwestern United States or a native Michigan population. Further resolution between these opposing hypotheses depends on increased sampling from the region, which, at present, has limited representation in natural history collections. Given their narrow range, and without definitive evidence of human introduction, we recommend that six-lined racerunner lizards continue to be treated as endemic and threatened in the State of Michigan. 
 
 
 
@@ -21,126 +19,10 @@ Keywords: six-lined racerunners, conservation, phylogenetics, extralimital, Mich
 
 ![Six-Lined Racerunner Lizard](Images/six-lined-racerunner-in-grass.jpeg)
 
-# Introduction 
-
-```{r }
-#| cache = FALSE
-knitr::read_chunk('discuss_figure.R')
-```
-
-Load needed packages and filepaths.  
-
-```{r setup}
-#| message: FALSE
-#| warning: FALSE
-```
-
-Load custom functions.
-
-```{r functions}
-```
-
-Load the data.
-
-```{r loaddata}
-```
-
-# Create a summary table
-
-Here we will use skimr which produces a summary table, but with more than we want. Letʻs save it as an object so we can grab the elements we want. 
-
-It turns out that the `skim()` function returns a tibble. We can coerce it to a dataframe and use `head()` to see what the column names are and what the data look like. 
-
-```{r, summarize}
-```
-
-## Select columns for a final summary table
-
-Letʻs retain only the variable, N, mean, sd, and category counts, but letʻs rename them. Since we will use the SD to compute the stadard error letʻs just rename it as SE now and save a step later.  (Remember the standard error is just the standard deviation/ square root(sample size)). 
-
-Note: The `results="asis"` is an option for `knitr` to layout the the results without the code formatting. Normally output from code chunks has the look of R output. `"asis"` removes that behavior, so we can lay it out as a typeset table for print. 
-
-```{r summary.table, results="asis"}
-```
-
-
-# Do sexes differ in size?
-
-First try a boxplot of mass by sex
-
-```{r mass_sex_boxplot}
-```
-
-
-Now letʻs try a density plot
-
-```{r mass_sex_density}
-```
-
-When we plot the results, Males appear to be larger than females. To test the statistical significance of this result we can use ANOVA. We see that sexes do differ in size and this is a very robust statistical result. 
-
-```{r mass_sex_aov}
-```
-
-# Does species have an affect on size?
-
-Based on our initial screening of the relationship between size and sex, we see that within each sex, the distribution is non-normal.
-For each Sex distinction, we grouped samples of the same sex but different species together. Perhaps, the underlying assumption of species
-is contributing to our non normal results. 
-
-What about a species affect? Since we know that sexes differ, we can include a two-way ANOVA and test both factors. 
-
-
-When we add species to the model _after_ we account for sex, it is highly significant. 
-
-```{r mass_species_island_aov}
-```
-
-If we add sex _first, before_ species, it is highly signficant! We interpret this as species differing in mass as well.
-```{r mass_sex_species_aov}
-```
-Letʻs plot both factors together to see whatʻs going on. We see that for each species, males are generally larger and there is some level of sexual dimorphism for all three species. By graphing the data by species, we can also notice that Gentoo is the largest of the three species.
-
-```{r mass_species_sex_density}
-```
-
-After some analysis, we see that sex and species both influence mass. But, when mass changes, do other physical measurments, like flipper length also change?
-
-# Let's adress the question, does mass have an affect on flipper length?
-
-We include a one way ANOVA to test
-```{r mass_flipper_aov}
-```
-From out ANOVA, we can see that the positive relationship between mass and flipper length is highly significant.
-Let's graph the relationship for a better look.
-
-```{r mass_flipper_plot}
-```
-We can add a linear trend line to better highlight the positive relationship between mass and flipper length that appears to increase relativly linearly. 
-
-# Discussion
-
-Overall, we see that both species and sex significantly impact mass while mass has a significant influence on flipper length.
-
-# The End
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.0 Introduction
+# 1.0 Introduction
 
 Across the globe, reptiles are increasingly threatened with extinction (Cox et al. 2022). Habitat fragmentation and degradation as well as the anthropogenic spread of invasive species are some of the principal drivers of reptile decline (Cox et al. 2022; Gibbons et al. 2000; Tan et al. 2023). Habitat destruction may result in immediate loss of habitat followed by long-term alterations in the biodiversity and function of the remaining fragments (Lindenmayer and Fisher 2006; Haddad et al. 2015). Documented impacts of alien reptile species include declines of native prey species, competitive displacement, disease transmission, and hybridization with native species (Bomford et al. 2009; Cole et al. 2005). 
 Compared to other vertebrates, reptiles frequently have smaller ranges (Todd et al. 2010). Factors that are likely causing the more limited ranges include habitat fragmentation and the anthropogenic transport of reptiles, which has created a number of isolated populations of lizards, including 927 species that are known only from their type locality (Meiri et al. 2018). These isolated populations with limited ranges are particularly susceptible to being extirpated (Meiri et al. 2018). 
@@ -152,21 +34,34 @@ It appears improbable that six-lined racerunner populations persisted in Tuscola
 
 Six-lined racerunners are locally common in isolated colonies including another population in Tippecanoe County, Indiana (fig. 1) (Harding and Mifsud 2017; Minton 2001). A previous study used dorsal color and stripe count to suggest the population in Tuscola County appears more similar to the Prairie subspecies (Aspidoscelis sexlineata viridis) than to the southern subspecies (Aspidoscelis sexlineata sexlineata) (Yoder 2007). While the ranges of both subspecies are not clearly defined, the Indiana Dunes region is occupied by the prairie subspecies (Harding and Holman 1990). 
 
-	Various past studies have all failed to conclusively locate the origin of the population (Yoder 2007; Sharif 2008). Fred Case, a retired orchid expert, reportedly spoke to two people who claimed to be introducing both plants and animals into MLSGA. In a personal communication with Dr. Gregory Schneide, curator of the Division of Reptiles and Amphibians at the Museum of Zoology at the University of Michigan, Dr. Schneide claimed to have information that the six-lined racerunners were introduced from Missouri (March 25, 2022). In apparent support for the introduction of herpetofauna to the region, the only known population of Northern Dusky Salamander (Desmognathus fuscus) in Michigan was also only described recently in the MLSGA (Carlson and Szuch 2005). 
+
+![Fig 1. Map highlighting the counties in Indiana and Michigan with recorded populations of six-lined racerunner lizards (Minton 2001). Populations in the Porter, Starke, and LaPorte counties of Indiana are geographically closest to the population in Tuscola County, Michigan. Figure made entirely in R.](../../Results/isolated_counties.pdf)
+
+
+Various past studies have all failed to conclusively locate the origin of the population (Yoder 2007; Sharif 2008). Fred Case, a retired orchid expert, reportedly spoke to two people who claimed to be introducing both plants and animals into MLSGA. In a personal communication with Dr. Gregory Schneide, curator of the Division of Reptiles and Amphibians at the Museum of Zoology at the University of Michigan, Dr. Schneide claimed to have information that the six-lined racerunners were introduced from Missouri (March 25, 2022). In apparent support for the introduction of herpetofauna to the region, the only known population of Northern Dusky Salamander (Desmognathus fuscus) in Michigan was also only described recently in the MLSGA (Carlson and Szuch 2005). 
  Despite the controversy surrounding the origin of six-lined racerunners in Michigan, the Michigan Natural Features Inventory lists six-lined racerunners as native and critically imperiled because of extreme rarity and vulnerability to extirpation from the state (2009). Based on this listing, six-lined racerunners are protected under the Endangered Species Act of the State of Michigan (Part 365 of PA 451, 1994 Michigan Natural Resources and Environmental Protection Act). It is important to determine if six-lined racerunners are, in fact, a critically imperiled native lizard in Michigan as devoting conservation management and resources to an introduced species would waste conservation resources and detract conservation management from other priorities. 
 Experts on herpetofauna of the Great Lakes region and past studies have called for more research to determine definitively the origin of the population (Holman 2012; Harding and Holman 1990; Yoder 2007; Sharif 2008).  Six-lined racerunners have the most limited range of all Michigan reptiles and are one of just two lizard species documented in Michigan (Harding and Holman 1990). Further investigation of the population is significant as it represents half of the total lizard diversity in the state.
 	The objective of this study was to use DNA sequence data to determine if the extralimital population of six-lined racerunners in Michigan is a rare native lizard or the result of a recent, human mediated introduction. We assembled museum samples of lizards from the Tuscola County population and an extensive sampling of the native range, including three samples from the Indiana Dunes region (fig. 2). We used short read sequences from the nuclear genome and phylogenetic analysis to infer the origin of the population. 
 
-Fig 2. Map of the range of six-lined racerunner lizards and the museum samples collected with the corresponding catalog number
 
-	Definitively determining the endemic/introduced status of the population is complicated given the inconclusive results of past studies and the relatively limited amount of genetic divergence. For our analysis, we reasoned that if the extralimital population represents a formerly continuous population from the Indiana Dunes region that naturally dispersed, a phylogeny should find that the Tuscola County six-lined racerunner lizards are most closely related to samples from Indiana (fig. 3A). If the Michigan population was introduced from somewhere else in the range, then a phylogeny should find that the Tuscola population is most closely related to populations near the source location and not to the Indiana Dunes samples (fig. 3B). 
+![Fig 2. Map of the range of six-lined racerunner lizards and the museum samples collected with the corresponding catalog number. For this figure, the base map and points was made in R, but the range map, in green, needed to be hand drawn using Inkscape](Images/allsampling.pdf)
+
+
+Definitively determining the endemic/introduced status of the population is complicated given the inconclusive results of past studies and the relatively limited amount of genetic divergence. For our analysis, we reasoned that if the extralimital population represents a formerly continuous population from the Indiana Dunes region that naturally dispersed, a phylogeny should find that the Tuscola County six-lined racerunner lizards are most closely related to samples from Indiana (fig. 3A). If the Michigan population was introduced from somewhere else in the range, then a phylogeny should find that the Tuscola population is most closely related to populations near the source location and not to the Indiana Dunes samples (fig. 3B). 
+
+::: {layout-ncol=2}
+![A. Native](../../Results/intro_phylo_nat.pdf)
+
+![B. Introduced](../../Results/intro_phylo_intro.pdf)
+:::
 
 Fig 3. Simplified phylogenies that depict the two settlement patterns of Tuscola County, Michigan. A reflects a predicted topology for a native and once continuous population with Indiana and B reflects a predicted topology for a recent introduction from elsewhere in the range into Michigan. 
 
-	If the Tuscola population groups with the Indiana Dunes sample, we would consider a post-glaciation rapid dispersal of Michigan to be the most likely scenario and indicate six-lined racerunners to be a native lizard to Michigan. If the Tuscola County population groups with samples from anywhere besides Indiana then this situation indicates that six-lined racerunners are not native to Michigan and the small population in Tuscola County is the result of a recent human mediated introduction. Based on our sampling of the range, which lacks samples from regions including Missouri, unsampled populations cannot be placed as nodes on the phylogenetic trees and some phylogenetic results may have limited resolution. 
+
+If the Tuscola population groups with the Indiana Dunes sample, we would consider a post-glaciation rapid dispersal of Michigan to be the most likely scenario and indicate six-lined racerunners to be a native lizard to Michigan. If the Tuscola County population groups with samples from anywhere besides Indiana then this situation indicates that six-lined racerunners are not native to Michigan and the small population in Tuscola County is the result of a recent human mediated introduction. Based on our sampling of the range, which lacks samples from regions including Missouri, unsampled populations cannot be placed as nodes on the phylogenetic trees and some phylogenetic results may have limited resolution. 
 	Our motivation is to use the phylogenetic results to inform management decisions about the protection of the isolated and limited population of six lined racerunners, or, alternatively, to support more research into the ecological impact of the introduced and naturalized population. Determining the origin of the six-lined racerunner population and initiating further protection or research into their ecological impact is significant to the persistence of six-lined racerunners and the ecosystem they inhabit. 
 
-2.0 Methods
+# 2.0 Methods
 
 2.1 Sampling
 	To sample both the native range and extralimital population in Tuscola County, Michigan, we assembled 46 museum specimens from 40 localities (fig. 2.) (see Table 1 for a full list of samples). Collectively, the sampling included 16 states and generally spanned the entire range of six-lined racerunners (fig. 2). Seven of the samples were from the extralimital population in Tuscola County, Michigan. Three samples from Indiana (Lake and Knox Counties) and one sample from Kankakee County, Illinois were collected to represent the populations of six-lined racerunners in Indiana and Illinois. We also used an Arizona striped whiptail (Aspidoscelis arizonae) sample to serve as an outgroup in the analyses. 
@@ -185,23 +80,27 @@ We used IPYRAD v0.9.26 (Eaton & Overcast 2020) to quality filter and demultiple
 3.1 Sampling
 	We performed DNA extraction on the tissue samples for all 46 collected museum specimens. Of the 46 original samples, DNA extraction failed to yield sufficient DNA to be included in a ddRADseq library for 8 samples and these samples were dropped from all downstream analyses. The loss of sampling coverage was significant for samples from Indiana and Illinois in which 1 (FMNH282783) of the original 4 collected samples was included in the genetic library (fig. 4). For all ensuing phylogenetic analyses, sample FMNH282783 served as the sole taxa to represent the Indiana and Illinois geographic grouping. RAD sequencing resulted in a total of ∼106 million sequence reads. The number of raw reads per sample was highly variable per sample ranging from 21,949 to 24,014,071 (Table 2 in Appendix). Genetic sequences and the catalog numbers used in this study are uploaded to GenBank.
 
-Fig 4. Map showing the final samples included in ddRADseq library 
+![Fig 4. Map showing the final samples included in ddRADseq library ](../../Results/final_samples_used.pdf)
 
-	Examination of sequence quality summaries using FastQC (Andrews, 2012) showed that raw reads had generally high scores across the entire length of the sequences. Reference based assembly of the genetic data resulted in a total of ∼20,000 loci, with coverage being highly variable across individuals and loci (Table 2). Despite having relatively low coverage compared to other samples, FMNH282783 was kept in the assemblies and phylogenetic analyses as it was crucial for placing the Indiana group on the trees. Sample FHSM11050 was removed from downstream analyses after the first assembly due to poor coverage and not being an essential sample. Table 2 in the appendix details the samples used and loci included in each assembly and phylogenetic analyses.
+
+Examination of sequence quality summaries using FastQC (Andrews, 2012) showed that raw reads had generally high scores across the entire length of the sequences. Reference based assembly of the genetic data resulted in a total of ∼20,000 loci, with coverage being highly variable across individuals and loci (Table 2). Despite having relatively low coverage compared to other samples, FMNH282783 was kept in the assemblies and phylogenetic analyses as it was crucial for placing the Indiana group on the trees. Sample FHSM11050 was removed from downstream analyses after the first assembly due to poor coverage and not being an essential sample. Table 2 in the appendix details the samples used and loci included in each assembly and phylogenetic analyses.
 3.2 Phylogenetic Analysis
 	Phylogenetic analyses of the RADseq dataset recovered a topology where evolutionary relationships generally reflected geographic location (fig. 5). The deepest split in the tree divides samples from the eastern United States (NC, FL) and Gulf of Mexico region (AL, MS, LA) from the majority of samples from areas further west.  Within this larger group, the sole sample from Indiana Dunes is placed within a clade of the Michigan samples. The clade of Indiana and Michigan samples is rooted by sample FHSM13277_KS which was sampled from the Eastern border of Kansas just west of the Kansas and Missouri border. 
 
 
+![Fig 5. Phylogenetic tree constructed with all samples using default parameters in the assembly. The clade containing Michigan and Indiana and the general topology by geographic region is highlighted using vertical bars. See tables 1 and 2 in the appendix for detailed locality information and the loci included for the analysis.](../../Results/RefG1_annotated.pdf)
+ 
 
-Fig 5. Phylogenetic tree constructed with all samples using default parameters in the assembly. The clade containing Michigan and Indiana and the general topology by geographic region is highlighted using vertical bars. See tables 1 and 2 in the appendix for detailed locality information and the loci included for the analysis. 
+![Compare this to the original file I made using fig.tree and inkscape](Images/final_refG1.pdf)
 
 3.3 Sensitivity analysis
 	Phylogenetic analyses of the RADseq datasets with different numbers of taxa, loci, and missing data were highly congruent (fig. 5; fig. 6). Both phylogenetic trees constructed for a sensitivity analysis generally recover relationships that reflect geographic origin and place the Indiana Dunes sample within a larger group containing the Tuscola County, Michigan samples (fig. 6). For the phylogenetic analysis with intermediate parameters (fig. 6A), the Indiana and Michigan clade is rooted by a group containing samples FHSM13277_KS, FHSM13461_AR sampled from Northern Arkansas, and FHSM13563_OK sampled from Eastern Oklahoma. 
 	 	
            
 
+![Fig 6. A and B are phylogenetic trees constructed for a sensitivity analysis with various loci and missing data (for loci included, see table 2 in the appendix). Both assemblies were constructed using default parameters but adjusting minimum number of samples per locus for output to be 35/37 for A and 37/37 for B. The Michigan and Indiana clade is highlighted by a vertical bar. ](../../Results/sen_analy.pdf)
 
-Fig 6. A and B are phylogenetic trees constructed for a sensitivity analysis with various loci and missing data (for loci included, see table 2 in the appendix). Both assemblies were constructed using default parameters but adjusting minimum number of samples per locus for output to be 35/37 for A and 37/37 for B. The Michigan and Indiana clade is highlighted by a vertical bar. 
+![Compare this figure to the original that I assembled and annotated in Inkscape](Images/sen_analysis.pdf)
 
 
 
@@ -209,11 +108,16 @@ Fig 6. A and B are phylogenetic trees constructed for a sensitivity analysis wit
 
 4.0 DISCUSSION 
 
-	DNA sequence data, including ddRAD tags, is increasingly used to address conservation management questions (Johnson et al. 2011; Balmori-de la Puente et al. 2022). For this study, we completed an exhaustive search of herpetological museum collections to assemble tissue samples from the general range of six-lined racerunner lizards. Our intent was to place an emphasis on samples from Missouri as there has been substantial speculation that lizards from Missouri were introduced via humans to Michigan. In addition, our goal was to highlight specimens from Indiana as its proximity to Michigan increases the likelihood that the Indiana population may be the source of the Michigan population. To the best of our knowledge, there are no six-lined racerunner samples from Missouri that are available in museum collections and viable for genetic analysis. Natural history collections of six-lined racerunners from Indiana may also be limited because some populations of six-lined racerunners in Indiana are now very uncommon (Minton 2001). Sampling limitations become increasingly common when working at range boundaries and with populations facing habitat fragmentation. 
+DNA sequence data, including ddRAD tags, is increasingly used to address conservation management questions (Johnson et al. 2011; Balmori-de la Puente et al. 2022). For this study, we completed an exhaustive search of herpetological museum collections to assemble tissue samples from the general range of six-lined racerunner lizards. Our intent was to place an emphasis on samples from Missouri as there has been substantial speculation that lizards from Missouri were introduced via humans to Michigan. In addition, our goal was to highlight specimens from Indiana as its proximity to Michigan increases the likelihood that the Indiana population may be the source of the Michigan population. To the best of our knowledge, there are no six-lined racerunner samples from Missouri that are available in museum collections and viable for genetic analysis. Natural history collections of six-lined racerunners from Indiana may also be limited because some populations of six-lined racerunners in Indiana are now very uncommon (Minton 2001). Sampling limitations become increasingly common when working at range boundaries and with populations facing habitat fragmentation. 
 Our phylogenetic results provide new information on whether the extralimital population of six-lined racerunner lizards in Michigan is the result of a recent human mediated introduction or an endemic species that reached Michigan naturally as part of a post-glacial northern expansion. Sampled populations of six-lined racerunners in Michigan and Indiana likely both arose from ancestral populations in the central United States including Arkansas, Nebraska, and Kansas (fig. 4). It is possible that Central populations of six-lined racerunner lizards expanded northward into Indiana and successively into Michigan, forming a largely continuous and native population; the phylogenetic tree we recover is consistent with this scenario (fig. 6A). Our results are also consistent with a scenario where populations in Indiana arose from ancestors to the south, while the Michigan population is the product of a more recent human introduction (fig. 6B). The phylogenetic results do not distinguish between these two opposing scenarios explaining the history of the Michigan. 
 
-Fig. 7 Diagram depicting the predicted settlement pattern and corresponding phylogeny for the two hypothesized origins of the Michigan population- recent anthropogenic introduction (A) or native post-glacial northern dispersal (B).
-	Our results cannot confirm oral accounts of the Michigan population being the direct result of recent human introductions from Missouri. Without sampling the populations in Missouri that potentially are the source populations of six-lined racerunner lizards in Michigan, we are unable to test for the close relationship between Michigan and Missouri samples that this scenario predicts. Fig. 7A depicts a possible scenario in which an unsampled population (possibly Missouri) may be the source of the Tuscola County population, but an unsampled populations cannot be placed on a phylogeny. Our results depict both a topology that suggests a native settlement in Michigan (fig. 7B) and a topology that supports an introduction from an unsampled population into Michigan (fig. 7A). 
+![I used these maps from R](../../Results/discuss_fig_maps.pdf)
+![And simple phylos from R to compile and add detail in inkscape](../../Results/discuss_fig_phylo.pdf)
+
+![Fig. 7 Diagram depicting the predicted settlement pattern and corresponding phylogeny for the two hypothesized origins of the Michigan population- recent anthropogenic introduction (A) or native post-glacial northern dispersal (B).](Images/final_discuss_figure.pdf)
+
+
+Our results cannot confirm oral accounts of the Michigan population being the direct result of recent human introductions from Missouri. Without sampling the populations in Missouri that potentially are the source populations of six-lined racerunner lizards in Michigan, we are unable to test for the close relationship between Michigan and Missouri samples that this scenario predicts. Fig. 7A depicts a possible scenario in which an unsampled population (possibly Missouri) may be the source of the Tuscola County population, but an unsampled populations cannot be placed on a phylogeny. Our results depict both a topology that suggests a native settlement in Michigan (fig. 7B) and a topology that supports an introduction from an unsampled population into Michigan (fig. 7A). 
 	Our results do narrow down hypotheses on the origin of the Tuscola County population. Based on current sampling, the results indicate that the Michigan population is derived from populations in the central United States, but the results do not decipher if the population was recently introduced from this region or if it is the product of a natural and stepwise path northwards through Indiana. Our results, therefore, highlight the need to further sample populations in Missouri, Indiana, and other regions of the northern range edge, as these populations are critical for further narrowing the provenance of the six-lined racerunner lizard population in Michigan. Future field work to collect six-lined racerunners in Missouri is necessary to decisively test for the ancestral relationship between six-lined racerunner lizards in Missouri and Michigan. 
 	While increased sampling and analysis of six-lined racerunner lizards may eventually reveal that the Michigan is a recent anthropogenic introduction, given the narrow range, limited population size, and lack of definitive phylogenetic evidence of a recent introduction, we recommend that six-lined racerunner lizards continue to be listed as endemic and threatened in the State of Michigan. 
 
@@ -234,251 +138,10 @@ Fig. 7 Diagram depicting the predicted settlement pattern and corresponding phyl
 
 Table 1   Specimens examined. We use the following acronyms for collections resources: University of Texas El Paso Biodiversity Collections (UTEP), University of Michigan Museum of Zoology (UMMZ), Louisiana State University Museum of Natural Sciences (LSUH), Oklahoma Collection of Genomic Resources at the Sam Noble Museum (OCGR), American Museum of Natural History (AMNH), Field Museum of Natural History (FMNH), Museum of Vertebrate Zoology at U.C. Berkeley (MVZ),  Auburn University Museum of Natural History (AUHT), California Academy of Sciences (CAS),  Natural History Museum of Los Angeles County (LACM), Harvard Museum of Comparative Zoology (MCZ), University of Florida Museum of Natural History (FLMNH), University of Colorado Museum of Natural History (UCM), Fort Hays State University Sternberg Museum of Natural History (FHSM), Auburn University Museum of Natural History (AUHT).
 
-State
-N
-County
-LAT
-LON
-Catalogue Number
-AL
-3
-Geneva
-31.0951
--86.18157
-UTEP19951
-31.09135
--86.18937
-UTEP19949
-Macon
-32.51446
--85.61176
-AUHT3009
-AR
-2
-Franklin
-35.66157
--93.84528
-FHSM13461
-Cleburne
-35.53523
--91.89255
-UTEP20927
-CO
-1
-Bent
-38.090948
--103.12037
-UCM68793
-FL 
-5
-Walton
-30.5365
--86.0536
-AUHT6624
-Dixie
-29.6768889
--83.34075
-CAS214323
+```{ojs}
+data = FileAttachment("../../Data/Raw_data/Table1_apen.csv").csv({ typed: true })
+```
 
-
-Citrus
-28.838028
--82.329806
-CAS210988
-
-
-Hillsborough
-28.05257
--82.42038
-LACM405
-
-
-Highlands
-27.13408
--81.32492
-FLMNH162452
-GA
-1
-Taliaferro
-33.52602
--82.8497
-FLMNH186726
-IL
-1
-Kankakee
-41.150118
--87.853279
-FMNH270533
-IN
-3
-Lake
-41.44061
--87.367336
-FMNH282783
-41.418813
--87.359084
-MCZR-14244
-Knox
-38.6978578
--87.390215
-MCZR-14247
-KS
-6
-Allen
-37.99593
--95.09689
-FHSM11050
-Ellsworth
-38.62943
--98.31319
-FHSM11062
-
-
-Johnson
-38.91939
--94.94588
-FHSM13103
-
-
-Cheyenne
-39.7412
--101.86253
-FHSM9042
-Crawford
-37.64727
--94.80845
-FHSM13277
-37.62584
--94.81065
-FHSM12917
-LA
-2
-Winn
-31.883707
--92.524465
-LSUH18938
-Bienville
-32.344494
--93.14349
-LSUH21201
-MI
-7
-Tuscola
-43.29311
--83.452948
-UMMZ217160
-43.29311
--83.452948
-UMMZ217161
-
-
-
-43.29311
--83.452948
-UMMZ217162
-
-
-
-43.29311
--83.452948
-UMMZ217163
-
-
-
-43.29311
--83.452948
-UMMZ217164
-
-
-
-43.29311
--83.452948
-UMMZ217165
-
-
-
-43.29311
--83.452948
-UMMZ240708
-MS
-1
-Greene
-31.35252
--88.67345
-UTEP19952
-NC
-2
-Brunswick
-33.9214
--78.0206
-MVZ137535
-Wake
-35.7474
--78.5793
-MVZ137537
-NE
-3
-Adams
-40.4666
--98.697
-FHSM16526
-Phelps
-40.66428
--99.37649
-FHSM16527
-40.624881
--99.1983
-FHSM16530
-NM
-2
-Chavez
-33.44155
--103.82035
-MSB74291
-33.61675266
--103.8505105
-MSB74657
-OK
-2
-Latimer
-34.82143
--95.06059
-FHSM13563
-Roger Mills
-35.6143
--99.96187
-UTEP21668
-35.6143
--99.96178
-UTEP21669
-Marshall
-33.89288
--96.86561
-OCGR12740
-
-
-Atoka
-34.51229
--96.00281
-OCGR4952
-
-
-Ellis
-35.87393
--99.68023
-OCGR7048
-TX
-1
-Brooks
-27.211995
--98.137144
-AMNH104629
-Wheeler
-35.51068
--100.42252
-UTEP21736
-Outgroup
-arizonae_OCGR6220
 
 
 
@@ -698,37 +361,6 @@ arizonae_OCGR6220
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-‘
 
 REFERENCES
 Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data
