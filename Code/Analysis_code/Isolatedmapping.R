@@ -37,6 +37,7 @@ map1 <- study_counties2 %>%
 map1 + scalebar(study_counties2, border.size = 0.5, st.size = 1.8, dist = 50, dist_unit = "km",
              transform = TRUE, model = "WGS84")
 
-
+#save as jpeg and pdf
  ggsave("../../Results/isolated_counties.pdf")
+ ggsave("../../Results/isolated_counties.jpeg")
 
