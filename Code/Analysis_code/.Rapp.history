@@ -1,0 +1,658 @@
+library(ggplot2)#
+library(dplyr, warn.conflicts = FALSE)#
+#install.packages("devtools")#
+#devtools::install_github("yutannihilation/ggsflabel")#
+library(ggsflabel, warn.conflicts = FALSE)#
+#install.packages("tigris")#
+library(tigris, warn.conflicts = FALSE)#
+#install.packages("maptools")#
+#install.packages("ggsn")#
+library(ggsn)
+state <- states(cb = TRUE, class = "sf") %>% #
+  filter(NAME == c("Michigan", "Indiana"))
+county <- counties(state = c("MI", "IN"))
+study_counties <- county %>% #
+  filter(NAME %in% c("Tuscola", "Posey", "Gibson", "Knox", "Floyd", "Clark", "Tippecanoe", "Lake", "Porter", "LaPorte", "Newton", "Jasper", "Pulaski", "Starke"))
+study_counties2 <- study_counties[-8,]
+study_counties2 %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()
+map1 <- study_counties2 %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()
+> map1 +#
++     scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
++              transform = TRUE, model = "WGS84")
+> map1 +#
++     scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
++              transform= TRUE, model = "WGS84")
+> map1 +#
++     scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
++              transform = TRUE, model = "WGS84")
+> map1 +
+map1 +#
++     scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
++              transform = TRUE, model = "WGS84")
+map1 +#
+     scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
++              transform = TRUE, model = "WGS84")
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 2.3, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 2, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 1, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 1.8, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+library(ggplot2)#
+library(ggmap)#
+library(maps)#
+library(mapdata)
+sampling <- read.table("RcoordsMI.txt", sep = "\t", header = TRUE)
+getwd()
+setwd("../../thesis_figures/")
+sampling <- read.table("RcoordsMI.txt", sep = "\t", header = TRUE)
+ggplot(sampling, aes(lon, lat), color = "black") +#
+  borders("state") + geom_point(color = "red") +#
+  ggrepel::geom_text_repel(aes(label = Id), size = 2.3, max.overlaps = 10) +#
+  theme_void() +#
+  coord_fixed(1.3)
+ggsave("../Results")
+ggsave("../Results"/final_samples_used.pdf)
+ggsave("../Results/isolated_counties.pdf")
+getwd()
+ggsave("../Results/final_samples_used.pdf)
+""
+)
+ggsave("../Results/final_samples_used.pdf")
+ggsave("../../Results/isolated_counties.pdf")
+library(ggplot2)#
+library(dplyr, warn.conflicts = FALSE)#
+#install.packages("devtools")#
+#devtools::install_github("yutannihilation/ggsflabel")#
+library(ggsflabel, warn.conflicts = FALSE)#
+#install.packages("tigris")#
+library(tigris, warn.conflicts = FALSE)#
+#install.packages("maptools")#
+#install.packages("ggsn")#
+library(ggsn)#
+#
+#Load MI/IN state data from package#
+state <- states(cb = TRUE, class = "sf") %>% #
+  filter(NAME == c("Michigan", "Indiana"))#
+#
+#Load MI/IN county data from package#
+county <- counties(state = c("MI", "IN"))#
+#
+#limit only to counties with known populations. County lists from (Minton 2001)#
+study_counties <- county %>% #
+  filter(NAME %in% c("Tuscola", "Posey", "Gibson", "Knox", "Floyd", "Clark", "Tippecanoe", "Lake", "Porter", "LaPorte", "Newton", "Jasper", "Pulaski", "Starke"))#
+#drop one county (repeat) #
+study_counties2 <- study_counties[-8,]  #
+#
+#map states and fill in selected counties, repel county labels#
+map1 <- study_counties2 %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()#
+#
+#add scale bar to map#
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 1.8, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+setwd("../Code/Analysis_code/")
+#Mapping Midwest populations  #
+#
+library(ggplot2)#
+library(dplyr, warn.conflicts = FALSE)#
+#install.packages("devtools")#
+#devtools::install_github("yutannihilation/ggsflabel")#
+library(ggsflabel, warn.conflicts = FALSE)#
+#install.packages("tigris")#
+library(tigris, warn.conflicts = FALSE)#
+#install.packages("maptools")#
+#install.packages("ggsn")#
+library(ggsn)#
+#
+#Load MI/IN state data from package#
+state <- states(cb = TRUE, class = "sf") %>% #
+  filter(NAME == c("Michigan", "Indiana"))#
+#
+#Load MI/IN county data from package#
+county <- counties(state = c("MI", "IN"))#
+#
+#limit only to counties with known populations. County lists from (Minton 2001)#
+study_counties <- county %>% #
+  filter(NAME %in% c("Tuscola", "Posey", "Gibson", "Knox", "Floyd", "Clark", "Tippecanoe", "Lake", "Porter", "LaPorte", "Newton", "Jasper", "Pulaski", "Starke"))#
+#drop one county (repeat) #
+study_counties2 <- study_counties[-8,]  #
+#
+#map states and fill in selected counties, repel county labels#
+map1 <- study_counties2 %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()#
+#
+#add scale bar to map#
+map1 + scalebar(study_counties2, border.size = 0.5, st.size = 1.8, dist = 50, dist_unit = "km",#
+             transform = TRUE, model = "WGS84")
+ggsave("../../Results/isolated_counties.pdf")
+#load required packages#
+library(ggplot2)#
+library(ggmap)#
+library(maps)#
+library(mapdata)#
+#
+#read in coords for final samples#
+sampling <- read.table("../../Data/Raw_Data/RcoordsMI.txt", sep = "\t", header = TRUE)#
+#
+#plot points and use repel  #
+ggplot(sampling, aes(lon, lat), color = "black") +#
+  borders("state") + geom_point(color = "red") +#
+  ggrepel::geom_text_repel(aes(label = Id), size = 2.3, max.overlaps = 10) +#
+  theme_void() +#
+  coord_fixed(1.3)#
+ #add this to fix coords coord_fixed(1.3)
+ggsave("../..Results/final_samples_used.pdf")
+ggsave("../../Results/final_samples_used.pdf")
+install.packages("ape")#
+install.packages("phangorn")#
+install.packages("phytools")#
+install.packages("geiger")#
+#
+require("ape")#
+require("phangorn")#
+require("phytools")#
+require("geiger")
+text.string <- "((Indiana, Michigan),Midwest);"
+vert.tree<-read.tree(text=text.string)#
+ rt.4<-rotate(vert.tree,4)#
+ plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+text.string <- "((Indiana, Michigan), Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+text.string <- "((Population_Not_Indiana_i.e._Missouri, Michigan),Southern_Ancestral_Population);"
+text.string <- "((Population_Not_Indiana_i.e._Missouri, Michigan),Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+text.string <- "((Population_Not_Indiana_(i.e._Missouri), Michigan),Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+text.string <- "((Population_Not_Indiana_-e.g._Missouri, Michigan),Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+text.string <- "((Not_Indiana_-e.g._Missouri, Michigan),Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+pdf(file = "../../Results/intro_phylo_nat.pdf")#
+text.string <- "((Indiana, Michigan), Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+dev.off()
+pdf(file = "../../Results/intro_phylo_intro.pdf")#
+text.string <- "((Not_Indiana_-e.g._Missouri, Michigan),Southern_Ancestral_Population);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+dev.off()
+library(ggplot2)#
+library(dplyr, warn.conflicts = FALSE)#
+#install.packages("devtools")#
+#devtools::install_github("yutannihilation/ggsflabel")#
+library(ggsflabel, warn.conflicts = FALSE)#
+#install.packages("tigris")#
+library(tigris, warn.conflicts = FALSE)#
+#install.packages("maptools")#
+#install.packages("ggsn")#
+library(ggsn)
+state <- states(cb = TRUE, class = "sf") %>% #
+  filter(NAME %in% c("Michigan", "Indiana", "Colorado", "Kansas", "Nebraska", "Missousi"))
+county <- counties(state = c("MI"))
+study_counties <- county %>% #
+  filter(NAME %in% c("Tuscola"))
+study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()
+study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  theme_void()
+study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  geom_sf_label_repel(aes(label = NAME), force = 50) +#
+  theme_void()
+study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA) +#
+  theme_void()
+study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  theme_void()
+map <- study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  theme_void()
+map
+install.packages("gridExtra")
+grid.arrange(map, map, ncol = 2)
+require(gridExtra)
+grid.arrange(map, map, ncol = 2)
+map <- study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  ggtitle("A. Introduced")#
+  theme_void()
+map
+map <- study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  ggtitle("A. Introduced") +#
+  theme_void()
+map
+map_native <- study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  ggtitle("B. Native") +#
+  theme_void()
+grid.arrange(map_intro, map_native, ncol = 2)
+map_intro <- study_counties %>% #
+  ggplot() +#
+  geom_sf(fill = "gray") +#
+  geom_sf(data = state, fill = NA, size = 2) +#
+  ggtitle("A. Introduced") +#
+  theme_void()
+grid.arrange(map_intro, map_native, ncol = 2)
+text.string <- "((Indiana, Michigan), Midwest);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+q <- plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+q
+simple <- plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+simple
+grid.arrange(map_intro, simple, ncol = 2)
+class(simple)
+simple
+p <- grid.arrange(map_intro, map_native, ncol = 2)
+ggsave("../../Results/map_figure_discus.pdf")
+p <- grid.arrange(map_intro, map_native, ncol = 2)
+ggsave("../../Results/map_figure_discus.pdf")
+text.string <- "((Indiana, Michigan),Midwest);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+ggsave("../../Results/phylo_figure_discus.pdf")
+pdf(file = ""../../Results/discuss_figure_maps.pdf"")#
+p <- grid.arrange(map_intro, map_native, ncol = 2)#
+dev.off()
+pdf(file = ""../../Results/discuss_figure_maps.pdf"")#
+grid.arrange(map_intro, map_native, ncol = 2)#
+dev.off()
+g <- grid.arrange(map_intro, map_native, ncol = 2)
+g
+ggsave(file = "../../Results/discuss_fig_maps", g)
+ggsave(file = "../../Results/discuss_fig_maps.pdf", g)
+q <- plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)
+ggsave("../../Results/discuss_fig_phylo.pdf", q)
+pdf(file = "../../Results/discuss_fig_phylo.pdf")#
+text.string <- "((Indiana, Michigan),Midwest);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+q <- plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+dev.off()
+pdf(file = "../../Results/discuss_fig_phylo.pdf")#
+text.string <- "((Indiana, Michigan),Midwest);"#
+vert.tree<-read.tree(text=text.string)#
+rt.4<-rotate(vert.tree,4)#
+plot(rt.4,no.margin=TRUE,edge.width=2, cex=2)#
+dev.off()
+list_files = list('../../Data/Raw_data/RefG1_stats.txt', '../../Data/Raw_data/RefG1_stats.txt' )
+list_files = list('../../Data/Raw_data/RefG1_stats.txt', '../../Data/Raw_data/RefV2_stats.txt', '../../Data/Raw_data/Ref35:37_stats.txt' )
+df = read.table(list_files,sep='\t')
+df = read.table('../../Data/Raw_data/RefG1_stats.txt',sep='\t')
+print(df)
+head(df)
+getwd()
+phy <- ape::read.tree(file='../../thesis_figures/FinalTrees/RAxML_bipartitions.RefG1.tre')
+phy <- ape::read.tree(file='../../Data/Raw_data/RAxML_bipartitions.RefG1.tre')
+plot(phy)
+ggtree(phy)
+install.packages("ggtree")
+install.packages("ggtree")
+require(ape)#
+require(ggtree)#
+require(treeio)
+phy <- ape::read.tree(file='../../Data/Raw_data/RAxML_bipartitions.RefG1.tre')
+ggtree(phy)
+ggtree(tree) + geom_tiplab()
+ggtree(phy) + geom_tiplab()
+ggtree(phy) + #
+    geom_tiplab() +#
+    geom_text(aes(label=node), hjust=-.3)
+ggtree(phy) + #
+    geom_tiplab() +#
+    geom_text(aes(label=node), hjust=-.3)
+phy
+phy2 <- root(phy, outgroup = "arizonae_OCGR6220", edgelabel = TRUE)
+ggtree(phy2) + #
+    geom_tiplab() +#
+    geom_text(aes(label=node), hjust=-.3)
+plot(phy2)
+gridExtra::grid.arrange(phy2, flip(phy2, 38, 33), ncol=2)
+p <- ggtree(phy2) + geom_text(aes(label=node))
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) +geom_tiplab()
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .14)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .014)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node), size = 0.5) + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p
+p
+gridExtra::grid.arrange(p, flip(p, 42), ncol=2)
+p
+gridExtra::grid.arrange(p, flip(p, 42, 64), ncol=2)
+gridExtra::grid.arrange(ggtree(phy2, color=col), #
+                        ggtree(phy2, color=col) %>% rotate(42) %>% rotate(64), #
+                        ncol=2)
+gridExtra::grid.arrange(ggtree(phy2), #
+                        ggtree(phy2) %>% rotate(42) %>% rotate(64), #
+                        ncol=2)
+gridExtra::grid.arrange(ggtree(p), #
+                        ggtree(p) %>% rotate(42) %>% rotate(64), #
+                        ncol=2)
+phy <- ape::read.tree(file='../../Data/Raw_data/RefG1_flipped.tre')
+phy2 <- root(phy, outgroup = "arizonae_OCGR6220", edgelabel = TRUE)
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2)  + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2)  + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014) + geom_text(aes(label=node)
+p
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014) + geom_text(aes(label=node)
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014)
+p
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .2, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .02, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .02, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .002, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .008, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="Michigan & Indiana", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .02, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .2, textcolor='red', barcolor='red')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(98,81,70), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", offset=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", offset=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46,44), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+phy <- ape::read.tree(file='../../Data/Raw_data/RefG1_nexus.tre')
+read.nexus(file = '../../Data/Raw_data/RefG1_nexus.tre, tree.names = NULL, force.multi = FALSE)
+read.nexus(file = '../../Data/Raw_data/RefG1_nexus.tre', tree.names = NULL, force.multi = FALSE)
+phy <- read.nexus(file = '../../Data/Raw_data/RefG1_nexus.tre', tree.names = NULL, force.multi = FALSE)
+phy2 <- root(phy, outgroup = "arizonae_OCGR6220", edgelabel = TRUE)
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014, align = TRUE, offset  = TRUE)
+p <- ggtree(phy2) + geom_text(aes(label=node)) + geom_tiplab(offset = .0014, align = TRUE)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p <- ggtree(phy2) + geom_text(aes(label=bootstrap)) + geom_tiplab(offset = .0014, align = TRUE)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p <- ggtree(phy2) + geom_tiplab(offset = .0014, align = TRUE)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                  geom_hilight(node=61, fill = 'blue')#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                  geom_hilight(node=61, fill = 'blue')#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue') +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon') +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red') +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon') +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon') +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow', angle = 90) +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange', angle = 90)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow', angle = 90) +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange', angle = 90)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange', angle = 90)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                  geom_hilight(node= c(51,49,46), fill = 'yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='orange', angle = 90)
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                  geom_hilight(node= c(51,49,46), fill = 'yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='orange', barcolor='blue', angle = 90) +#
+                  geom_hilight(node=67, fill = 'blue')
+p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, #
+                  offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +#
+                  geom_hilight(node=61, fill = 'blue') +#
+                    geom_cladelab(node=52, label="Midwest", align=TRUE, #
+                  offset = .007, textcolor='red', barcolor='red', angle = 90) +#
+                  geom_hilight(node=52, fill = 'red') +#
+                    geom_cladelab(node= c(51,49,46), label="South Central", align=TRUE, #
+                  offset = .006, textcolor='yellow', barcolor='yellow') +#
+                  geom_hilight(node= c(51,49,46), fill = 'yellow') +#
+                    geom_cladelab(node=67, label="South East", align=TRUE, #
+                  offset = .006, textcolor='blue', barcolor='blue', angle = 90) +#
+                  geom_hilight(node=67, fill = 'blue')
+ggsave('../../Results/RefG1_annotated.pdf')
+library(phytools)
+library(mapdata)
+coords <- read.delim("../../Data/Raw_data/RcoordsMI.txt")
+head(coords)
