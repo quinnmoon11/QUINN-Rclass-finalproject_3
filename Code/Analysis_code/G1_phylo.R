@@ -1,8 +1,4 @@
-load .tre files
-display bootstrap values
-rotate into N->S
-Annotate regions
- 
+
 require(ape)
 require(ggtree)
 require(treeio)

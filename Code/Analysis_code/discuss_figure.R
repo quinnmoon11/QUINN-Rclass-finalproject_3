@@ -43,8 +43,9 @@ map_native <- study_counties %>%
 
 #combine plots and save to pdf
 g <- grid.arrange(map_intro, map_native, ncol = 2)
-ggsave(file = "../../Results/discuss_fig_maps.pdf", g)
 
+
+ggsave(file = "../../Results/discuss_fig_maps.pdf", g)
 
 
  
