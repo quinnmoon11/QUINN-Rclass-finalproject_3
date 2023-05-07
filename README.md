@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-=======
+
 # QUINN-Rclass-finalproject_3
->>>>>>> ccaa03de48edaebb7a520de13da538639048c10d
+
 
 # Repo url
 
@@ -50,9 +49,3 @@ The project can be reproduced by executing the code in the following order:
 1.  First run the Analysis_code.qmd or open the Analysis_code.html
 2. Check the various R scripts that make all the needed figures
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> ccaa03de48edaebb7a520de13da538639048c10d
