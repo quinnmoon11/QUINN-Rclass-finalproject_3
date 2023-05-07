@@ -5,11 +5,12 @@
 
 # Overview
 
-A rough draft of project 3 for R Data science course
+Project 3 of R data science course. I walk through making all the figures for my thesis!
 
 # History
 
-2023-02-16 5/3/2023 first release of data and scripts
+ 5/3/2023 first release of data and scripts
+5/5/2023 final repo will all code uploaded
 
 
 
@@ -21,8 +22,7 @@ For more R packages supporting reproducible research check out the taskview <htt
 
 # Repository structure
 
-The repository supports the notion that there should _only be one copy of code and any outputs_. Any time the intellectual content needs to be reused, it is referred to or linked from the one copy. This way we can prevent different copies of the same content from accidentally diverging, and it is easier to maintain the project. 
-
+The repository supports the notion that there should _only be one copy of code and any outputs_.
 This template also uses the convention that Folder names begin with a capital letter. 
 
 * All data goes into the `Data` folder and any subfolders.
@@ -38,12 +38,6 @@ Please see the `README.md` files in each folder for more details.
 * This repo begins with txt and .tre files in the `Raw_data` folder. 
 * The `Analysis_code` folder contains several files that load the raw data, make figures and save the figures into Results folder 
 
-Planned additions:
-*Add more README files to the subfolders
-*change all the embedded files to something besides pdf
-*format the CSV with samples coords better
-*write script to grab needed info from a few txt stats output files from phylogenetic assemblies
-*find better format for reference section 
 
 # Getting started
 
