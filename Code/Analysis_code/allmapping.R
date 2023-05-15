@@ -1,8 +1,11 @@
+## ---- allmapping_pack --------
 #load required packages
 library(ggplot2)
 library(ggmap)
 library(maps)
 library(mapdata)
+
+## ---- samplemap ----
 
 #read in coords for samples
 
@@ -23,7 +26,7 @@ ggplot(sampling, aes(lon, lat), color = "black") +
  
   
 #save the map as pdf
-ggsave("allsampling.pdf")
+ggsave("../../Results/allsampling.pdf")
 
  
  

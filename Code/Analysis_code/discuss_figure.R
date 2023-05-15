@@ -1,3 +1,4 @@
+## ---- disc_fig_pack --------
 
 #Mapping Midwest populations  
 library(ggplot2)
@@ -14,6 +15,9 @@ require("ape")
 require("phangorn")
 require("phytools")
 require("geiger")
+library("gridExtra")
+
+## ---- disc_fig_data --------
 
 #grab states you want on the map
 state <- states(cb = TRUE, class = "sf") %>% 
@@ -24,6 +28,8 @@ county <- counties(state = c("MI"))
 #just showing Tuscola County
 study_counties <- county %>% 
   filter(NAME %in% c("Tuscola"))
+
+## ---- disc_fig_plot --------
 
 #plot this map with label
 map_intro <- study_counties %>% 
@@ -48,7 +54,8 @@ g <- grid.arrange(map_intro, map_native, ncol = 2)
 ggsave(file = "../../Results/discuss_fig_maps.pdf", g)
 
 
- 
+## ---- disc_fig_phylo --------
+
 
 #make simple phylo and save to pdf
 pdf(file = "../../Results/discuss_fig_phylo.pdf")

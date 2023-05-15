@@ -1,3 +1,4 @@
+## ---- disc_map_pack --------
 #Mapping Midwest populations  
 
 library(ggplot2)
@@ -11,6 +12,8 @@ library(tigris, warn.conflicts = FALSE)
 #install.packages("ggsn")
 library(ggsn)
 
+## ---- disc_map_data --------
+
 state <- states(cb = TRUE, class = "sf") %>% 
   filter(NAME %in% c("Michigan", "Indiana", "Colorado", "Kansas", "Nebraska", "Missousi"))
 
@@ -20,6 +23,7 @@ county <- counties(state = c("MI"))
 study_counties <- county %>% 
   filter(NAME %in% c("Tuscola"))
      
+## ---- disc_map_plot --------
 
 study_counties %>% 
   ggplot() +

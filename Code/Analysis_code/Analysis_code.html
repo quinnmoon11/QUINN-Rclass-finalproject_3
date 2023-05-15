@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.333">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -83,13 +83,13 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/six-lined-racerunner-in-grass.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Six-Lined Racerunner Lizard</figcaption><p></p>
+<figcaption class="figure-caption">Six-Lined Racerunner Lizard</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/sexlin_NM.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Photo of a Six-Lined Racerunner Lizard I took in my yard in New Mexico</figcaption><p></p>
+<figcaption class="figure-caption">Photo of a Six-Lined Racerunner Lizard I took in my yard in New Mexico</figcaption>
 </figure>
 </div>
 </section>
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../Results/isolated_counties.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig 1. Map highlighting the counties in Indiana and Michigan with recorded populations of six-lined racerunner lizards (Minton 2001). Populations in the Porter, Starke, and LaPorte counties of Indiana are geographically closest to the population in Tuscola County, Michigan. <strong>Figure made entirely in R. See (Analysis_code/Isolatedmapping.R) for script</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig 1. Map highlighting the counties in Indiana and Michigan with recorded populations of six-lined racerunner lizards (Minton 2001). Populations in the Porter, Starke, and LaPorte counties of Indiana are geographically closest to the population in Tuscola County, Michigan. <strong>Figure made entirely in R. See (Analysis_code/Isolatedmapping.R) for script</strong></figcaption>
 </figure>
 </div>
 <p>Various past studies have all failed to conclusively locate the origin of the population (Yoder 2007; Sharif 2008). Fred Case, a retired orchid expert, reportedly spoke to two people who claimed to be introducing both plants and animals into MLSGA. In a personal communication with Dr.&nbsp;Gregory Schneide, curator of the Division of Reptiles and Amphibians at the Museum of Zoology at the University of Michigan, Dr.&nbsp;Schneide claimed to have information that the six-lined racerunners were introduced from Missouri (March 25, 2022). In apparent support for the introduction of herpetofauna to the region, the only known population of Northern Dusky Salamander (Desmognathus fuscus) in Michigan was also only described recently in the MLSGA (Carlson and Szuch 2005).&nbsp;</p>
@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/allsampling.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig 2. Map of the range of six-lined racerunner lizards and the museum samples collected with the corresponding catalog number. <strong>For this figure, the base map with sampling locations was made in R, but the range map, in green, needed to be hand drawn using Inkscape</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig 2. Map of the range of six-lined racerunner lizards and the museum samples collected with the corresponding catalog number. <strong>For this figure, the base map with sampling locations was made in R, but the range map, in green, needed to be hand drawn using Inkscape</strong></figcaption>
 </figure>
 </div>
 <p>Definitively determining the endemic/introduced status of the population is complicated given the inconclusive results of past studies and the relatively limited amount of genetic divergence. For our analysis, we reasoned that if the extralimital population represents a formerly continuous population from the Indiana Dunes region that naturally dispersed, a phylogeny should find that the Tuscola County six-lined racerunner lizards are most closely related to samples from Indiana (fig.&nbsp;3A). If the Michigan population was introduced from somewhere else in the range, then a phylogeny should find that the Tuscola population is most closely related to populations near the source location and not to the Indiana Dunes samples (fig.&nbsp;3B).</p>
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><embed src="../../Results/intro_phylo_nat.pdf" class="img-fluid"></p>
-<p></p><figcaption class="figure-caption">A. Native</figcaption><p></p>
+<figcaption class="figure-caption">A. Native</figcaption>
 </figure>
 </div>
 </div>
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><embed src="../../Results/intro_phylo_intro.pdf" class="img-fluid"></p>
-<p></p><figcaption class="figure-caption">B. Introduced</figcaption><p></p>
+<figcaption class="figure-caption">B. Introduced</figcaption>
 </figure>
 </div>
 </div>
@@ -160,20 +160,20 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../Results/final_samples_used.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig 4. Map showing the final samples included in ddRADseq library. <strong>Map made entirely in R using (Analysis_code/allmapping.R)</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig 4. Map showing the final samples included in ddRADseq library. <strong>Map made entirely in R using (Analysis_code/allmapping.R)</strong></figcaption>
 </figure>
 </div>
 <p>Examination of sequence quality summaries using FastQC (Andrews, 2012) showed that raw reads had generally high scores across the entire length of the sequences. Reference based assembly of the genetic data resulted in a total of ∼20,000 loci, with coverage being highly variable across individuals and loci (Table 2). Despite having relatively low coverage compared to other samples, FMNH282783 was kept in the assemblies and phylogenetic analyses as it was crucial for placing the Indiana group on the trees. Sample FHSM11050 was removed from downstream analyses after the first assembly due to poor coverage and not being an essential sample. Table 2 in the appendix details the samples used and loci included in each assembly and phylogenetic analyses. *** 3.2 Phylogenetic Analysis Phylogenetic analyses of the RADseq dataset recovered a topology where evolutionary relationships generally reflected geographic location (fig.&nbsp;5). The deepest split in the tree divides samples from the eastern United States (NC, FL) and Gulf of Mexico region (AL, MS, LA) from the majority of samples from areas further west. Within this larger group, the sole sample from Indiana Dunes is placed within a clade of the Michigan samples. The clade of Indiana and Michigan samples is rooted by sample FHSM13277_KS which was sampled from the Eastern border of Kansas just west of the Kansas and Missouri border.&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../Results/RefG1_annotated.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig 5. Phylogenetic tree constructed with all samples using default parameters in the assembly. The clade containing Michigan and Indiana and the general topology by geographic region is highlighted using vertical bars. <strong>Initial .tre file was visualized in Figtree before loading, rooting, and annotating in R using (Analysis_code/G1_phylo.R).</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig 5. Phylogenetic tree constructed with all samples using default parameters in the assembly. The clade containing Michigan and Indiana and the general topology by geographic region is highlighted using vertical bars. <strong>Initial .tre file was visualized in Figtree before loading, rooting, and annotating in R using (Analysis_code/G1_phylo.R).</strong></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/final_refG1.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Compare this to the original file I made using fig.tree and inkscape</figcaption><p></p>
+<figcaption class="figure-caption">Compare this to the original file I made using fig.tree and inkscape</figcaption>
 </figure>
 </div>
 </section>
@@ -183,13 +183,13 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../Results/sen_analy.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig 6. A and B are phylogenetic trees constructed for a sensitivity analysis with various loci and missing data (for loci included, see table 2 in the appendix). Both assemblies were constructed using default parameters but adjusting minimum number of samples per locus for output to be 35/37 for A and 37/37 for B. The Michigan and Indiana clade is highlighted by a vertical bar. <strong>I made this figure entirely in R! (Analysis_code/sen_analy.R)</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig 6. A and B are phylogenetic trees constructed for a sensitivity analysis with various loci and missing data (for loci included, see table 2 in the appendix). Both assemblies were constructed using default parameters but adjusting minimum number of samples per locus for output to be 35/37 for A and 37/37 for B. The Michigan and Indiana clade is highlighted by a vertical bar. <strong>I made this figure entirely in R! (Analysis_code/sen_analy.R)</strong></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/sen_analysis.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Compare this figure to the original that I assembled and annotated in Inkscape</figcaption><p></p>
+<figcaption class="figure-caption">Compare this figure to the original that I assembled and annotated in Inkscape</figcaption>
 </figure>
 </div>
 </section>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/final_discuss_figure.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Fig. 7 Diagram depicting the predicted settlement pattern and corresponding phylogeny for the two hypothesized origins of the Michigan population- recent anthropogenic introduction (A) or native post-glacial northern dispersal (B).<strong>This is a great example of these lines and legend being very hard to make in R so a tool like Inkscape might be a better idea!</strong></figcaption><p></p>
+<figcaption class="figure-caption">Fig. 7 Diagram depicting the predicted settlement pattern and corresponding phylogeny for the two hypothesized origins of the Michigan population- recent anthropogenic introduction (A) or native post-glacial northern dispersal (B).<strong>This is a great example of these lines and legend being very hard to make in R so a tool like Inkscape might be a better idea!</strong></figcaption>
 </figure>
 </div>
 <p>Our results cannot confirm oral accounts of the Michigan population being the direct result of recent human introductions from Missouri. Without sampling the populations in Missouri that potentially are the source populations of six-lined racerunner lizards in Michigan, we are unable to test for the close relationship between Michigan and Missouri samples that this scenario predicts. Fig. 7A depicts a possible scenario in which an unsampled population (possibly Missouri) may be the source of the Tuscola County population, but an unsampled populations cannot be placed on a phylogeny. Our results depict both a topology that suggests a native settlement in Michigan (fig.&nbsp;7B) and a topology that supports an introduction from an unsampled population into Michigan (fig.&nbsp;7A).&nbsp; Our results do narrow down hypotheses on the origin of the Tuscola County population. Based on current sampling, the results indicate that the Michigan population is derived from populations in the central United States, but the results do not decipher if the population was recently introduced from this region or if it is the product of a natural and stepwise path northwards through Indiana. Our results, therefore, highlight the need to further sample populations in Missouri, Indiana, and other regions of the northern range edge, as these populations are critical for further narrowing the provenance of the six-lined racerunner lizard population in Michigan. Future field work to collect six-lined racerunners in Missouri is necessary to decisively test for the ancestral relationship between six-lined racerunner lizards in Missouri and Michigan. While increased sampling and analysis of six-lined racerunner lizards may eventually reveal that the Michigan is a recent anthropogenic introduction, given the narrow range, limited population size, and lack of definitive phylogenetic evidence of a recent introduction, we recommend that six-lined racerunner lizards continue to be listed as endemic and threatened in the State of Michigan.</p>
@@ -263,9 +263,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -330,6 +344,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

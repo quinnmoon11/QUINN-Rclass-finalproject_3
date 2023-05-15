@@ -12,7 +12,7 @@ phy2 <- root(phy, outgroup = "arizonae_OCGR6220", edgelabel = TRUE)
 
 
 #first step is making sure I can see node and tip labels
-p <- ggtree(phy2) + geom_tiplab(offset = .0014, align = TRUE)
+p <- ggtree(phy2) + geom_tiplab(offset = .0014)  # I think align=T is deprecated
 p +   geom_cladelab(node=61, label="MI/IN", align=TRUE, 
                   offset = .006, textcolor='maroon', barcolor='maroon', angle = 90) +
                   geom_hilight(node=61, fill = 'blue') +
