@@ -1,0 +1,95 @@
+---
+title: "Analysis supporting: Are Critically Imperiled Six-Lined Racerunner Lizards Native or Introduced to Michigan?"
+subtitle: "Project 3"
+author: "Quinn Moon"
+date: "04/30/2023"
+output: html_document
+---
+
+Obviously youʻd have a bit more explanation to explain key points. This is just a skeleton
+
+The code for this analysis is maintained in the following separate scripts and pulled in via codechunks: 
+
+```{r }
+#| cache = FALSE
+knitr::read_chunk("allmapping.R")
+knitr::read_chunk("discuss_figure.R")
+knitr::read_chunk("discuss_map.R")
+```
+
+It would be good to put somehwere all of the packages one will need to install to get this to run. Even better in the readme. 
+
+# Create a map of all sample locations
+
+Load required packages. You might explain anything new or special about these. 
+
+```{r, allmapping_pack}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+Map all of the sample locations using... blah blah blah 
+
+```{r, samplemap}
+```
+
+## plot the map and the sample points
+
+Explain ... 
+
+```{r, allmapping_pack}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+# Discussion Figure
+
+The goal here is to .. packages are... 
+```{r, disc_fig_pack}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+The data used are... 
+
+```{r, disc_fig_data}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+Plots are made with ggplot2:
+
+```{r, disc_fig_plot}
+```
+
+And the phylogeny 
+
+```{r, disc_fig_phylo}
+```
+
+# Discussion Map
+
+The goal here is to .. packages are... 
+```{r, disc_map_pack}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+The data used are... 
+
+```{r, disc_map_data}
+#| message: FALSE
+#| warning: FALSE 
+```
+
+
+Plots are made with ggplot2:
+
+```{r, disc_map_plot}
+```
+
+
+
+
+
+
